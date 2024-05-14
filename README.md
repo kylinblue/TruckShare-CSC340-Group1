@@ -15,7 +15,7 @@
 > TruckShare
 
 
-## Description (about 100 words)
+## Description
 
 > For people that don't have a truck and wants to get stuff moved, and for people that have a truck that wants it to be 
 > fully utilized and monetized.\
