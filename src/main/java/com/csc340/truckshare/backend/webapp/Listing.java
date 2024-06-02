@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import java.util.Date;
 
 @Entity
-@Table(name = "Listings")
+@Table(name = "listing")
 
 public class Listing {
     @Id
