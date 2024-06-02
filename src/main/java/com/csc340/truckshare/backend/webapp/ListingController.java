@@ -17,6 +17,10 @@ public class ListingController {
 
     @Autowired UserService userService;
     @Autowired ListingService listingService;
-    @Autowired ConversationService
+    @Autowired ConversationService conversationService;
+
+    @GetMapping("/{all")
+    public String getAllListings(Model model)
+    }
 
 }
