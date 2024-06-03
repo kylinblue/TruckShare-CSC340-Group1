@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("/auth")
-    public String userAuth(User user){
+    public String userAuth(User user) {
         if (user.getUserType()) {
             return "admin-home";
         }
