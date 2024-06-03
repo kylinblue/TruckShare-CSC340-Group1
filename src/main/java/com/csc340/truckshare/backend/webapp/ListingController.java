@@ -21,7 +21,14 @@ public class ListingController {
 
     @GetMapping("/all")
     public String getAllListings(Model model){
+        model.addAttribute("allListings", listingService.getAllListings());
+        return "all-Listings";
+    }
 
+    @GetMapping("/findListingByUserId")
+    public String findListingByUserId(){
+        return "find-Listing-By-User-Id";
     }
 
 }
+
