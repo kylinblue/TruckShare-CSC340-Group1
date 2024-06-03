@@ -27,13 +27,11 @@ public class ConversationService {
         return conversationRepository.queryByUserId(userId);
     }
 
-
     public Conversation saveConversation(Conversation conversation) {
         return conversationRepository.save(conversation);
     }
 
     public void deleteConversation(int convId) {
         conversationRepository.deleteById(convId);
-
     }
 }

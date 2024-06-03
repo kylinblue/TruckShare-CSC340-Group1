@@ -55,12 +55,18 @@ public class User {
         this.username = username;
     }
 
+    // plain text password!
     public void setUserPassword(Password userPassword) {
-        this.userPassword = generate(char[a] userPassword);
+        this.userPassword = userPassword;
     }
 
-    public PasswordHash getUserPasswordHash() {
-        return this.userPassword.hashCode();
+    public Password getUserPassword() {
+        return userPassword;
     }
+
+    // password hash, to be implemented
+    /*public PasswordHash getUserPasswordHash() {
+        return this.userPassword.hashCode();
+    }*/
 
 }

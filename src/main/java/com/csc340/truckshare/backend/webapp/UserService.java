@@ -15,7 +15,11 @@ public class UserService {
 
     public User getUserByUserName(String username, Password password) {
         User user = userRepository.findByUsername(username);
-        if (user.)
+        // Need to implement password hash, currently plain text
+        if (user.getUserPassword() == password) {
+            return user;
+        }
+        return null;
     }
 
     public User getUserByUserId(int userId) {

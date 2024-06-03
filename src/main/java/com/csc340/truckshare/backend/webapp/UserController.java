@@ -29,12 +29,17 @@ public class UserController {
 
     @PostMapping("/auth")
     public String userAuth(String username, Password password){
-        User user = UserRepository.
-        if (user.getUserType()) {
+        User user = userService.getUserByUserName(username, password);
+        if (user == null)
+        {
+            return "auth-failure";
+        }
+        else if (user.getUserType()) {
             return "admin-home";
         }
         else return "user-home";
     }
 
-    @
+    @GetMapping("/logout")
+    public String userLogout(){ return "user-login"; }
 }
