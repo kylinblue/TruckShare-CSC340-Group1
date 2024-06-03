@@ -44,12 +44,11 @@ public class ConversationController {
 
 
 
-
     @PostMapping("/save")
     public RedirectView saveConversation(Conversation conversation,RedirectAttributes attributes){
         conversationService.saveConversation(conversation);
         attributes.addFlashAttribute("message","Conversation Saved");
-        return new RedirectView("/webapp/user/userid/")
+        return new RedirectView("/webapp/user/userid/");
     }
 
     @PostMapping("/delete")
