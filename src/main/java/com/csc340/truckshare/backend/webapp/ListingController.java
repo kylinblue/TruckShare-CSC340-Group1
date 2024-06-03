@@ -19,7 +19,7 @@ public class ListingController {
     @Autowired ListingService listingService;
     @Autowired ConversationService conversationService;
 
-    @GetMapping("/{all")
+    @GetMapping("/all")
     public String getAllListings(Model model){
 
     }
