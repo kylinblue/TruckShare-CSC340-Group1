@@ -1,9 +1,9 @@
 package com.csc340.truckshare.backend.webapp;
 
 import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 import jakarta.security.enterprise.credential.Password;
 import jakarta.persistence.*;
+import jakarta.security.enterprise.identitystore.*;
 
 @Entity
 @Table(name = "user")
@@ -16,22 +16,18 @@ public class User {
 
     private boolean isAdmin;
 
-    private Password userPassword;
-
     @Nonnull
-    private String title;
+    private String username;
 
-    @Nullable
-    private String details;
+    private Password userPassword;
 
     public User() {}
 
-    public User(int userId, boolean isAdmin, Password userPassword, String title, String details){
+    public User(int userId, boolean isAdmin, Password userPassword, String username, String details){
         this.userId = userId;
         this.isAdmin = isAdmin;
         this.userPassword = userPassword;
-        this.title = title;
-        this.details = details;
+        this.username = username;
     }
 
     public int getUserId() {
@@ -51,20 +47,20 @@ public class User {
     }
 
     @Nonnull
-    public String getTitle() {
-        return title;
+    public String getUsername() {
+        return username;
     }
 
-    public void setTitle(@Nonnull String title) {
-        this.title = title;
+    public void setUsername(@Nonnull String username) {
+        this.username = username;
     }
 
-    @Nullable
-    public String getDetails() {
-        return details;
+    public void setUserPassword(Password userPassword) {
+        this.userPassword = generate(char[a] userPassword);
     }
 
-    public void setDetails(@Nullable String details) {
-        this.details = details;
+    public PasswordHash getUserPasswordHash() {
+        return this.userPassword.hashCode();
     }
+
 }

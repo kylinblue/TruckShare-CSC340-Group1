@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 import java.util.Date;
 
 @Entity
-@Table(name = "conversations")
+@Table(name = "conversation")
 public class Conversation {
 
     @Id

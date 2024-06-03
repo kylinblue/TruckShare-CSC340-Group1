@@ -19,9 +19,16 @@ public class ListingController {
     @Autowired ListingService listingService;
     @Autowired ConversationService conversationService;
 
-    @GetMapping("/{all")
+    @GetMapping("/all")
     public String getAllListings(Model model){
+        model.addAttribute("allListings", listingService.getAllListings());
+        return "all-Listings";
+    }
 
+    @GetMapping("/findListingByUserId")
+    public String findListingByUserId(){
+        return "find-Listing-By-User-Id";
     }
 
 }
+
