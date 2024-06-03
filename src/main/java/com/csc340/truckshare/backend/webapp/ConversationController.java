@@ -25,7 +25,6 @@ public class ConversationController {
         conversationService.createConversation(conversation);
         attributes.addFlashAttribute("message", "New conversation started!");
         return new RedirectView("/webapp/user/userid/");
-        //fix address!!
     }
 
     @GetMapping("/all")
@@ -37,9 +36,8 @@ public class ConversationController {
 
 
     @GetMapping("/byUserID")
-    public RedirectView getConversationsByUserId(Conversation conversation,int id, RedirectAttributes attributes){
-        conversationService.getConversationsByUserId(conversation, id );
-        attributes.addFlashAttribute("message", "Here is the conversations for"+id);
+    public RedirectView getConversationsByUserId(int id, Model model){
+        model.addAttribute("conversation", conversationService.getConversationsByUserId(id));
         return new RedirectView("/webapp/user/userid/");
     }
 

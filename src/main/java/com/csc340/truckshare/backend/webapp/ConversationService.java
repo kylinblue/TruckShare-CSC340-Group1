@@ -26,7 +26,7 @@ public class ConversationService {
         return conversationRepository.findAll();
     }
 
-    public List<Conversation> getConversationsByUserId(Conversation conversation, int userId) {
+    public List<Conversation> getConversationsByUserId(int userId) {
         return conversationRepository.queryByUserId(userId);
     }
 
