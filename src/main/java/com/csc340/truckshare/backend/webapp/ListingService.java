@@ -1,15 +1,18 @@
 package com.csc340.truckshare.backend.webapp;
 
+import java.util.List;
+
 public class ListingService {
-    public Object getAllListings() {
+    public List<Listing> getAllListings() {
+
     }
 
     public void createListing(Listing listing) {
     }
 
-    public void updateListing(Long id, Listing listing) {
+    public void updateListing(int id, Listing listing) {
     }
 
-    public void deleteListing(Long id) {
+    public void deleteListing(int id) {
     }
 }

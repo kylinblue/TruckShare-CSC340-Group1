@@ -22,6 +22,15 @@ public class UserService {
         return null;
     }
 
+    public int createUser(User user) {
+        if (getUserByUserName(user.getUsername(), user.getUserPassword())==null)
+        {
+            userRepository.save(user);
+            return user.getUserId();
+        }
+        else return -1;
+    }
+
     public User getUserByUserId(int userId) {
         return userRepository.findById(userId).orElse(null);
     }

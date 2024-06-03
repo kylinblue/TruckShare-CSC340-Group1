@@ -21,8 +21,11 @@ public class UserController {
         return "user-login";
     }
 
-    @GetMapping("/signup") // aka create
-    public String userSignup(){
+    @PostMapping("/signup") // aka create
+    public String userSignup(User user){
+        if (userService.createUser(user)==-1){
+            return "user-exists";
+        }
         return "user-signup";
     }
     // need to implement username check
