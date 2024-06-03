@@ -35,7 +35,7 @@ public class ConversationController {
 
 
 
-    @GetMapping("/byUserID")
+    @GetMapping("/by/user/id")
     public RedirectView getConversationsByUserId(int id, Model model){
         model.addAttribute("conversation", conversationService.getConversationsByUserId(id));
         return new RedirectView("/webapp/user/userid/");
