@@ -1,9 +1,11 @@
 package com.csc340.truckshare.backend.webapp;
 
-import ch.qos.logback.core.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -18,24 +20,44 @@ public class ConversationController {
     @Autowired ConversationService conversationService;
 
 
-    @GetMapping("/all")
-    public List<Conversation>getAllConversation() {
-        return conversationService.getALlConversations();
-
+    @GetMapping("/new")
+    public RedirectView createConversation(Conversation conversation, RedirectAttributes attributes) {
+        conversationService.createConversation(conversation);
+        attributes.addFlashAttribute("message", "New conversation started!");
+        return new RedirectView("/webapp/user/userid/");
+        //fix address!!
     }
+
+    @GetMapping("/all")
+    public String getALlConversations(Model model){
+        model.addAttribute("allConversations", conversationService.getALlConversations());
+        return "all-Conversations";
+    }
+
+
 
     @GetMapping("/byUserID")
-    public List<Conversation>getConversationsByUserId(int userId){
-        return conversationService.getConversationsByUserId(userId);
+    public RedirectView getConversationsByUserId(Conversation conversation,int id, RedirectAttributes attributes){
+        conversationService.getConversationsByUserId(conversation, id );
+        attributes.addFlashAttribute("message", "Here is the conversations for"+id);
+        return new RedirectView("/webapp/user/userid/");
     }
+
+
+
+
 
     @PostMapping("/save")
-    public Conversation saveConversation(@RequestBody Conversation conversation){
-        return conversationService.saveConversation(conversation);
+    public RedirectView saveConversation(Conversation conversation,RedirectAttributes attributes){
+        conversationService.saveConversation(conversation);
+        attributes.addFlashAttribute("message","Conversation Saved");
+        return new RedirectView("/webapp/user/userid/")
     }
 
-    @DeleteMapping("/{convId}")
-    public void deleteConversation(@PathVariable int convId){
-        conversationService.deleteConversation(convId);
+    @PostMapping("/delete")
+    public RedirectView deleteConversation(@RequestParam("convId") int id, RedirectAttributes attributes) {
+        conversationService.deleteConversation(id);
+        attributes.addFlashAttribute("message", "Conversation deleted successfully!");
+        return new RedirectView("/webapp/user/userid/");
     }
 }

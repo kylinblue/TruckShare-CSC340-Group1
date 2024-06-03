@@ -19,11 +19,14 @@ public class ConversationService {
         this.conversationRepository = conversationRepository;
     }
 
+    public void createConversation(Conversation listing) {
+    }
+
     public List<Conversation> getALlConversations(){
         return conversationRepository.findAll();
     }
 
-    public List<Conversation> getConversationsByUserId(int userId) {
+    public List<Conversation> getConversationsByUserId(Conversation conversation, int userId) {
         return conversationRepository.queryByUserId(userId);
     }
 
