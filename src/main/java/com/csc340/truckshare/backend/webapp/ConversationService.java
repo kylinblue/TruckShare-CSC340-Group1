@@ -19,6 +19,10 @@ public class ConversationService {
         this.conversationRepository = conversationRepository;
     }
 
+    public List<Conversation> getALlConversations(){
+        return conversationRepository.findAll();
+    }
+
     public List<Conversation> getConversationsByUserId(int userId) {
         return conversationRepository.queryByUserId(userId);
     }
