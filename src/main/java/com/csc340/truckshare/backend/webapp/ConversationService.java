@@ -8,7 +8,11 @@ import java.util.List;
 @Service
 public class ConversationService {
 
-    private final ConversationRepository conversationRepository;
+    @Autowired
+    ConversationRepository conversationRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     public ConversationService(ConversationRepository conversationRepository) {
@@ -19,9 +23,7 @@ public class ConversationService {
     public List<Conversation> getConversationsByUserId(int userId) {
         return conversationRepository.queryByUserId(userId);
     }
-    public List<Conversation> getConversationsBetweenUsers(int convId) {
-        return conversationRepository.queryByConvId(convId);
-    }
+
 
     public Conversation saveConversation(Conversation conversation) {
         return conversationRepository.save(conversation);
