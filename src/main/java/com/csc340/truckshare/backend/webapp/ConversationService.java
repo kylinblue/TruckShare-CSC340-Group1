@@ -30,5 +30,6 @@ public class ConversationService {
 
     public void deleteConversation(int convId) {
         conversationRepository.deleteById(convId);
+
     }
 }
